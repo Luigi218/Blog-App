@@ -1,0 +1,25 @@
+<div class="flex flex-col">
+	<div class="flex flex-row gap-4 bg-blue-500">
+		<p class="text-3xl mt-2 mb-2 ml-4 hover:text-white"><%= link_to 'Home', articles_path %></p>
+		<p class="text-3xl mt-2 mb-2 hover:text-white"><%= link_to 'New Article', new_article_path %></p>
+	</div>
+	<br>
+	<p class="text-6xl flex justify-center"> Anything and Everything </p>
+	<br>
+	<p class="text-2xl flex justify-center">
+		A place where you can write about the most profound of thoughts, or the most mundane of day to day lives
+	</p>
+	<br>
+	<div class="ml-4 grid grid-rows-3 grid-cols-3 gap-10 justify-items-center">
+		<% @articles.each do |article| %>
+			<div class="border-blue-500 border-solid border-4 w-56 rounded-lg flex flex-col text-center">
+				<!-- <p> ID: <%= article.id %> </p> -->
+				<a href="/articles/<%= article.id %>">
+					<p class="text-4xl"> <%= article.name %> </p>
+				</a>
+				<p class="text-1xl"> by Luigi Torres </p>
+				<p class="text-1xl"> <%= article.created_at.strftime('%B %d %Y') %> </p>
+			</div>
+		<% end %>
+	</div>
+</div>

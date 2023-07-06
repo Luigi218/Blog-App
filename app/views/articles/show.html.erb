@@ -1,0 +1,27 @@
+<div>
+	<div class="flex flex-row gap-4 bg-blue-500">
+			<p class="text-3xl mt-2 mb-2 ml-4 hover:text-white"><%= link_to 'Home', articles_path %></p>
+			<p class="text-3xl mt-2 mb-2 hover:text-white"><%= link_to 'New Article', new_article_path %></p>
+	</div>
+	<br>
+	<div class="ml-4 flex flex-col text-center">
+		<!-- <p> ID: <%= @article.id %></p> -->
+		<p class="text-5xl"> <%= @article.name %></p>
+		<p class="text-3xl"> by Luigi Torres last <%= @article.created_at.strftime('%B %d %Y') %> </p>
+		<br>
+		<p class="text-2xl"> <%= @article.body %></p>
+		<br>
+		<div class="flex flex-row justify-center gap-4">
+			<button class="text-2xl bg-blue-500 rounded px-2 hover:text-white">
+				<%= link_to 'Edit Article', edit_article_path %>
+			</button>
+			<button class="text-2xl bg-blue-500 rounded px-2 hover:text-white">
+				<%= link_to 'Delete Article', delete_article_path,
+					data: {
+					turbo_method: :delete
+					}
+		 		%>
+			</button>
+		</div>
+	</div>
+</div>

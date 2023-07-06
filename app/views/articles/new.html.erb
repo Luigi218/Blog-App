@@ -1,0 +1,37 @@
+<div>
+	<div class="flex flex-row gap-4 bg-blue-500">
+			<p class="text-3xl mt-2 mb-2 ml-4 hover:text-white"><%= link_to 'Home', articles_path %></p>
+			<p class="text-3xl mt-2 mb-2 hover:text-white"><%= link_to 'New Article', new_article_path %></p>
+	</div>
+	<br>
+	<div class="ml-4">
+		<p class="text-5xl"> New Article </p>
+		<%= form_with scope: :article, url: create_article_path, local: true do |f| %>
+		<p>
+			<% if @article.errors.any? %>
+				<ul>
+					<% @article.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+					<% end %>
+				</ul>	
+			<% end %>
+		</p>
+		<br>
+
+		<div class="text-3xl">
+			<p class="mb-2"><%= f.label "Title" %></p>
+			<%= f.text_field :name, size: 200 %>
+		</div>
+		<br>
+		<div class="text-3xl"> 
+			<p class="mb-2"><%= f.label :body %></p>
+			<%= f.text_area :body, :cols => 203, :rows => 10 %>
+		</div>
+
+		<button class="text-3xl bg-blue-500 rounded px-2 hover:text-white">
+			<%= f.submit %>
+		</button>
+
+		<% end %>
+	</div>
+</div>
